@@ -14,5 +14,23 @@
 ##    ('7', ['A', 'C', 'E', 'D'])
 ##    ('8', ['E', 'E', 'A', 'B'])
 ##    ('9', ['A', 'B', 'E', 'C'])
-##
-##
+
+#leer archivo
+file = open('data.csv', 'r').readlines()
+
+#Eliminar \n al final
+file = [row[0:-1] for row in file]
+
+#Separar por tab
+file = [row.split('\t') for row in file]
+
+result = {}
+
+for element in file:
+	result[element[1]] = []
+
+for element in file:
+	result[element[1]].append(element[0])
+
+for i in sorted(result.items()):
+    print(i)

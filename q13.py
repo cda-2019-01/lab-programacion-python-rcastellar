@@ -10,3 +10,29 @@
 ## E,11
 ## E,16
 ##
+#leer archivo
+file = open('data.csv', 'r').readlines()
+
+#Eliminar \n al final
+file = [row[0:-1] for row in file]
+
+#Separar por tab
+file = [row.split('\t') for row in file]
+    
+data = []
+i = 0
+for elemt in file:
+	data.append([])
+	for e in elemt:
+		a = e.split(',')
+		if(len(a) == 1):
+			data[i].append(a[0])
+		else:
+			data[i].append(a)
+	i += 1
+
+for element in data:
+    aux = 0
+    for e in element[4]:
+        aux += int(e.split(':')[1])
+    print(element[0] + ',' + str(aux))
